@@ -1,7 +1,8 @@
 
+// eslint-disable-next-line react/prop-types
 const MenuItemCard = ({item}) => {
     // eslint-disable-next-line react/prop-types
-    const { image, name, recipe,price,_id } = item;
+    const { image, name, recipe,price} = item;
     return (
       <div className="flex justify-center  gap-4">
         <img
