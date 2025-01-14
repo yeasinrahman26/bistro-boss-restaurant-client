@@ -16,7 +16,7 @@ const MenuItemCard = ({item}) => {
           </h3>
           <h3 className="text-[#737373] text-lg ">{recipe}</h3>
         </div>
-        <h2 className="text-[#BB8506]  ">{price}$</h2>
+        <h2 className="text-[#BB8506] text-xl font-semibold ">{price}$</h2>
       </div>
     );
 };
