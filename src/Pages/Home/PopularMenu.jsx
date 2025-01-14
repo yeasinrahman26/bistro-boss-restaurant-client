@@ -19,17 +19,22 @@ const PopularMenu = () => {
 
 
     return (
-        <section className="mb-12">
-            <SectionTitle
-            heading={'From Our Menu'}
-            subHeading={"Check it out"}
-            ></SectionTitle>
-            <div className="grid mx-4 md:mx-0 md:grid-cols-2 gap-10">
-                {
-                    menu.map(item=><MenuItemCard key={item._id} item={item} ></MenuItemCard>)
-                }
-            </div>
-        </section>
+      <section className="mb-12">
+        <SectionTitle
+          heading={"From Our Menu"}
+          subHeading={"Check it out"}
+        ></SectionTitle>
+        <div className="grid mx-4 md:mx-0 md:grid-cols-2 gap-10">
+          {menu.map((item) => (
+            <MenuItemCard key={item._id} item={item}></MenuItemCard>
+          ))}
+        </div>
+        <div className="flex mt-5 flex-col justify-center items-center">
+          <button className="btn btn-outline border-0 border-b-4">
+            View Full Menu
+          </button>
+        </div>
+      </section>
     );
 };
 
