@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import Cover from "../Shared/Cover/Cover";
-import PopularMenu from "../Home/PopularMenu";
+
 import menuImg from '../../assets/menu/banner3.jpg'
 import menuImg1 from '../../assets/menu/pizza-bg.jpg'
 import menuImg2 from '../../assets/menu/salad-bg.jpg'
@@ -35,7 +35,7 @@ const Menu = () => {
           subHeading={"Don`t Miss "}
           heading={"Today`s Offer"}
         ></SectionTitle>
-        <MenuCategory items={offered}></MenuCategory>
+        <MenuCategory title={"offered"} items={offered}></MenuCategory>
 
         {/*  */}
         <Cover
@@ -43,7 +43,7 @@ const Menu = () => {
           header={"PIZZA"}
           paragraph={"Would you like to try a dish?"}
         ></Cover>
-        <MenuCategory items={pizza}></MenuCategory>
+        <MenuCategory title={"pizza"} items={pizza}></MenuCategory>
 
         {/*  */}
         <Cover
@@ -51,14 +51,14 @@ const Menu = () => {
           header={"SALAD"}
           paragraph={"Would you like to try a dish?"}
         ></Cover>
-        <MenuCategory items={salad}></MenuCategory>
+        <MenuCategory title={"salad"} items={salad}></MenuCategory>
         {/*  */}
         <Cover
           coverImg={menuImg3}
           header={"SOUP"}
           paragraph={"Would you like to try a dish?"}
         ></Cover>
-        <MenuCategory items={soup}></MenuCategory>
+        <MenuCategory title={"soup"} items={soup}></MenuCategory>
 
         {/*  */}
         <Cover
@@ -66,7 +66,7 @@ const Menu = () => {
           header={"DESERT"}
           paragraph={"Would you like to try a dish?"}
         ></Cover>
-        <MenuCategory items={desserts}></MenuCategory>
+        <MenuCategory title={"desserts"} items={desserts}></MenuCategory>
       </div>
     );
 };
