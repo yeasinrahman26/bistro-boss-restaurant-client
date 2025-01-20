@@ -4,7 +4,8 @@ import {
   LoadCanvasTemplate,
   validateCaptcha,
 } from "react-simple-captcha";
-import { AuthContext } from "../../providers/AuthProvider";
+import AuthContext from "../../providers/AuthContext";
+
 
 const Login = () => {
   const captchaRef = useRef(null);
