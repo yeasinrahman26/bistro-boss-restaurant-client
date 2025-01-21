@@ -5,12 +5,16 @@ import {
   validateCaptcha,
 } from "react-simple-captcha";
 import AuthContext from "../../providers/AuthContext";
+import { Link, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
+import "./Login.css";
+import img from '../../assets/others/authentication2.png'
 
 const Login = () => {
   const captchaRef = useRef(null);
-  const [disabled,setDisabled]=useState(true)
-
+  const [disabled, setDisabled] = useState(true);
+  const navigate = useNavigate();
   const { loginUser } = useContext(AuthContext);
 
   useEffect(() => {
@@ -20,10 +24,9 @@ const Login = () => {
   const handleCaptcha = () => {
     const captchaValue = captchaRef.current.value;
     if (validateCaptcha(captchaValue)) {
-        setDisabled(false)
+      setDisabled(false);
     } else {
-        alert('check captcha')
-    
+      alert("check captcha");
     }
   };
 
@@ -32,27 +35,25 @@ const Login = () => {
     const from = e.target;
     const email = from.email.value;
     const password = from.password.value;
-    loginUser(email,password)
-    .then(result =>{
-      const user =result.user;
-      console.log(user)
-      
-    })
+    loginUser(email, password).then((result) => {
+      const user = result.user;
+      console.log(user);
+      navigate("/");
+    });
   };
 
   return (
-    <div className="hero bg-base-200 min-h-screen">
-      <div className="hero-content flex-col lg:flex-row">
+    <div className="hero  login-item bg-base-200 min-h-screen">
+      <Helmet>
+        <title>Bistro | Login</title>
+      </Helmet>
+      <div className="hero-content  login-item shadow-2xl mx-8 py-10 rounded-2xl border-black flex-col lg:flex-row">
         <div className="text-center md:w-1/2 lg:text-left">
-          <h1 className="text-5xl font-bold">Login now!</h1>
-          <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
+          <img src={img} alt="" />
         </div>
         <div className="card bg-base-100 md:w-1/2 max-w-sm shrink-0 shadow-2xl">
           <form onSubmit={handleLogin} className="card-body">
+            <h1 className="text-5xl text-center font-bold">Login now!</h1>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -82,6 +83,7 @@ const Login = () => {
                 <LoadCanvasTemplate />
               </label>
               <input
+                onBlur={handleCaptcha}
                 type="text"
                 name="captcha"
                 ref={captchaRef}
@@ -89,17 +91,19 @@ const Login = () => {
                 className="input input-bordered"
                 required
               />
-              <button
-                onClick={handleCaptcha}
-                className="btn btn-outline btn-xs"
-              >
-                Validate
-              </button>
             </div>
             <div className="form-control mt-6">
-              <button disabled={disabled} className="btn btn-primary">Login</button>
+              <button disabled={disabled} className="btn btn-primary">
+                Login
+              </button>
             </div>
           </form>
+          <p className="text-center pb-5">
+            Don`t have an account{" "}
+            <Link to={"/signUp"} className="text-red-600 font-bold text-lg">
+              Click here !
+            </Link>
+          </p>
         </div>
       </div>
     </div>

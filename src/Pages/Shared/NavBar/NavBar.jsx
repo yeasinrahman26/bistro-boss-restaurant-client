@@ -1,6 +1,13 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
-
+import AuthContext from "../../../providers/AuthContext";
+import { FaCartShopping } from "react-icons/fa6";
+import useCart from "../../../hooks/useCart";
 const NavBar = () => {
+  const { user, logout } = useContext(AuthContext);
+
+  const [cart]=useCart();
+
   const links = (
     <>
       <li>
@@ -13,7 +20,12 @@ const NavBar = () => {
         <NavLink to={"order/salad"}>Order</NavLink>
       </li>
       <li>
-        <NavLink to={"login"}>Login</NavLink>
+        <Link to={"/dashboard/cart"}>
+          <button className="flex items-center justify-center gap-2">
+            <FaCartShopping />
+            <div className="badge badge-secondary">+{cart.length}</div>
+          </button>
+        </Link>
       </li>
     </>
   );
@@ -45,13 +57,27 @@ const NavBar = () => {
             {links}
           </ul>
         </div>
-        <Link to={'/'} className="btn btn-ghost text-xl">BISTRO BOSS  </Link>
+        <Link to={"/"} className="btn btn-ghost text-xl">
+          BISTRO BOSS{" "}
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        {user ? (
+          <div className="flex gap-2 justify-center items-center">
+            <img src={user?.photoURL} className="w-10 h-10" alt="" />
+            <span className="mr-2">{user?.displayName}</span>
+            <button onClick={logout} className="btn btn-primary">
+              Logout
+            </button>
+          </div>
+        ) : (
+          <NavLink to={"login"}>
+            <button className="btn btn-primary">Login</button>
+          </NavLink>
+        )}
       </div>
     </div>
   );
