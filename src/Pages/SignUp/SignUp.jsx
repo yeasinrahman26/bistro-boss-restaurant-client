@@ -5,8 +5,11 @@ import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../../providers/AuthContext";
 import "./SingUp.css";
 import img2 from "../../assets/others/authentication.gif";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 const SignUp = () => {
+  const axiosPublic=useAxiosPublic();
   const {
     register,
     handleSubmit,
@@ -25,8 +28,19 @@ const SignUp = () => {
       updateUserProfile({
         displayName: data.name,
         photoURL: data.photo,
+        
       });
-      navigate("/");
+      const userInfo = {
+        name: data.name,
+        email: data.email,
+      };
+      axiosPublic.post('/users',userInfo)
+      .then(res=>{
+        if(res.data.insertedId)
+          console.log('data added');
+          navigate("/");
+      })
+      console.log('something is wrong');
     });
   };
 
@@ -101,6 +115,10 @@ const SignUp = () => {
               <button className="btn btn-primary">SignUp</button>
             </div>
           </form>
+          <div className="divider"></div>
+          <div className="mx-auto ">
+            <SocialLogin></SocialLogin>
+          </div>
           <p className="text-center pb-5">
             Already have an account{" "}
             <Link to={"/login"} className="text-red-600 font-bold text-lg">

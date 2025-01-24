@@ -10,6 +10,7 @@ import { Helmet } from "react-helmet-async";
 
 import "./Login.css";
 import img from '../../assets/others/authentication2.png'
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 const Login = () => {
   const captchaRef = useRef(null);
@@ -98,6 +99,10 @@ const Login = () => {
               </button>
             </div>
           </form>
+          <div className="divider"></div>
+          <div className="mx-auto ">
+            <SocialLogin></SocialLogin>
+          </div>
           <p className="text-center pb-5">
             Don`t have an account{" "}
             <Link to={"/signUp"} className="text-red-600 font-bold text-lg">
