@@ -1,17 +1,24 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { FaBurger, FaCalendar, FaCartShopping, FaEnvelope, FaList, FaSpoon, FaUsers, FaUtensils, FaVoicemail } from "react-icons/fa6";
-import { FaHome, FaShoppingBag } from "react-icons/fa";
+import {
+  FaCalendar,
+  FaCartShopping,
+  FaEnvelope,
+  FaList,
+  FaUsers,
+  FaUtensils,
+} from "react-icons/fa6";
+import { FaHome } from "react-icons/fa";
 import { MdOutlineRateReview } from "react-icons/md";
 import { TbBrandBooking } from "react-icons/tb";
 import { IoMenu } from "react-icons/io5";
 import useCart from "../hooks/useCart";
+import useAdmin from "../hooks/useAdmin";
 
 const DashBoard = () => {
   const [cart] = useCart();
 
-
   // TODO: get is admin from the database
-  const isAdmin=true;
+  const [isAdmin] = useAdmin();
   return (
     <div className="drawer lg:drawer-open">
       {/* Sidebar drawer toggle button */}
@@ -47,13 +54,13 @@ const DashBoard = () => {
                 <li>
                   <NavLink to="/dashboard/addItems">
                     <FaUtensils />
-                   Add Items
+                    Add Items
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="/dashboard/manageItems">
                     <FaList />
-                   Manage Items
+                    Manage Items
                   </NavLink>
                 </li>
                 <li>
