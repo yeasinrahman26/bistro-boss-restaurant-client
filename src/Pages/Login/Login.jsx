@@ -74,6 +74,7 @@ const Login = () => {
               <input
                 type="password"
                 name="password"
+                defaultValue={'14243444'}
                 placeholder="password"
                 className="input input-bordered"
                 required
@@ -94,7 +95,9 @@ const Login = () => {
               />
             </div>
             <div className="form-control mt-6">
-              <button disabled={disabled} className="btn btn-primary">
+              <button 
+              disabled={disabled}
+               className="btn btn-primary">
                 Login
               </button>
             </div>
