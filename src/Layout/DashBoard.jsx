@@ -52,13 +52,13 @@ const DashBoard = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/addItems">
+                  <NavLink to="addItems">
                     <FaUtensils />
                     Add Items
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/manageItems">
+                  <NavLink to="manageItems">
                     <FaList />
                     Manage Items
                   </NavLink>
@@ -76,7 +76,7 @@ const DashBoard = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/allUsers">
+                  <NavLink to="allUsers">
                     <FaUsers />
                     All Users
                   </NavLink>
@@ -97,7 +97,7 @@ const DashBoard = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/cart">
+                  <NavLink to="cart">
                     <FaCartShopping />
                     My Cart ({cart.length})
                   </NavLink>
